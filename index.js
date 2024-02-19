@@ -1,13 +1,13 @@
 const express = require('express');
 const port = process.env.PORT || 5000;
-
+const path = require('path');
 const app = express();
 
 const mongoose = require('./config/mongoose');
 
-app.use(express.static('./assets'));
+app.use(express.static(path.join(__dirname,'./assets')));
 app.set('view engine','ejs');
-app.set('views', './views');
+app.set('views', path.join(__dirname,'./views'));
 
 
 
