@@ -16,8 +16,11 @@ router.get("/get_temp_data/:sensor",async (req,res)=>{
         let plot = await TimeVsTemp.find({});
         let x = [],y=[];
         for(let i=0; i<plot.length; i++){
-            let time = new Date(plot[i].createdAt + (5*60*60*1000 + 30*60*1000));
-            x.push(time.getDate()+"/"+(time.getMonth()+1)+"/"+time.getFullYear() +" ; "+ time.getHours()+":"+time.getMinutes()+":"+time.getSeconds());
+            let k = new Date(plot[i].createdAt);
+            let options = {timeZone: 'Asia/Kolkata', timeZoneName: 'short'};
+            let istDateString = k.toLocaleString('en-IN', options);
+            // let time = new Date(plot[i].createdAt + (5*60*60*1000 + 30*60*1000));
+            x.push(istDateString);
             y.push(parseFloat(plot[i].temperature[sensor-1]));
         }
         return res.status(200).send({

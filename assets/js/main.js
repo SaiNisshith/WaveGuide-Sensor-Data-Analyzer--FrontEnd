@@ -54,7 +54,7 @@ function chartPlot(dat) {
                     display: true,
                     title: {
                         display: true,
-                        text: 'Time(DD/MM/YYYY ; Hours:Minutes:Seconds)',
+                        text: 'Time(DD/MM/YYYY, Hours:Minutes:Seconds)',
                         font: {
                             size: 16
                         }
